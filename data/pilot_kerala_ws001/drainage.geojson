@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "name": "Drainage_Network_WS001",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "STR-001", "name": "Main Catchment Stream", "order": 3, "length_km": 4.2 },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [76.685, 10.810],
+          [76.678, 10.798],
+          [76.669, 10.787],
+          [76.658, 10.778],
+          [76.645, 10.771],
+          [76.630, 10.768]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "STR-002", "name": "Northern Ridge Tributary", "order": 2, "length_km": 2.1 },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [76.655, 10.806],
+          [76.662, 10.795],
+          [76.669, 10.787]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "STR-003", "name": "Southern Gully Feeder", "order": 1, "length_km": 1.6 },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [76.675, 10.768],
+          [76.664, 10.774],
+          [76.658, 10.778]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+[package]
+name = "watershed-tauri-app"
+version = "0.1.0"
+description = "Watershed Geospatial Intelligence & Geo-Coded Image Analysis Desktop Platform"
+authors = ["Watershed Geospatial Intelligence Team"]
+edition = "2021"
+
+[lib]
+name = "watershed_tauri_lib"
+crate-type = ["lib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+watershed-core = { path = "../crates/watershed-core" }

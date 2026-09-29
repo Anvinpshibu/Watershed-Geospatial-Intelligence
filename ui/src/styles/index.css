@@ -1,0 +1,445 @@
+:root {
+  /* Araskova Research Lab Signature Theme Tokens */
+  --bg-primary: #f5f2eb;
+  --bg-secondary: #eeeae0;
+  --bg-tertiary: #e6e0d3;
+  --bg-surface: #faf8f5;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-card-elevated: #ffffff;
+  
+  --border-subtle: rgba(18, 18, 18, 0.12);
+  --border-medium: rgba(18, 18, 18, 0.22);
+  --border-strong: #121212;
+  --border-accent: #d9461e;
+
+  /* Typography Colors */
+  --text-primary: #121212;
+  --text-secondary: #57534e;
+  --text-muted: #8c857b;
+  --text-inverse: #f5f2eb;
+
+  /* Araskova Signature Vermillion & Semantic Accents */
+  --accent-vermillion: #d9461e;
+  --accent-vermillion-hover: #bf3813;
+  --accent-vermillion-subtle: rgba(217, 70, 30, 0.08);
+  --accent-vermillion-border: rgba(217, 70, 30, 0.35);
+
+  --accent-emerald: #15803d;
+  --accent-emerald-subtle: rgba(21, 128, 61, 0.1);
+  --accent-cyan: #0369a1;
+  --accent-cyan-subtle: rgba(3, 105, 161, 0.1);
+  --accent-amber: #b45309;
+
+  /* Typography */
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Sharp Technical Layout (minimal border radius for technical research aesthetic) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 16px 36px rgba(0, 0, 0, 0.09);
+
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  height: 100vh;
+
+  /* Subtle technical background grid */
+  background-image: 
+    linear-gradient(to right, rgba(18, 18, 18, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 18, 18, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Technical Topographic Watermark Background */
+.topographic-canvas-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  overflow: hidden;
+}
+
+/* Header Bar (Matching Araskova Top Bar in Screenshot) */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.75rem;
+  background: rgba(245, 242, 235, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: 50;
+  height: 64px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.brand-badge .vermillion-box {
+  width: 22px;
+  height: 22px;
+  background: var(--accent-vermillion);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: var(--radius-xs);
+}
+
+.technical-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent-vermillion);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.technical-tag::before {
+  content: '—';
+  color: var(--accent-vermillion);
+}
+
+.header-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Main Grid Layout */
+.app-main {
+  display: grid;
+  grid-template-columns: 360px 1fr 340px;
+  flex: 1;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+/* Sidebar Panels */
+.sidebar-panel {
+  display: flex;
+  flex-direction: column;
+  background: rgba(245, 242, 235, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--border-subtle);
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.sidebar-panel.right {
+  border-right: none;
+  border-left: 1px solid var(--border-subtle);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: rgba(238, 234, 224, 0.5);
+}
+
+.panel-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+/* Araskova Terminal Wireframe Box (Matching prompt card in screenshot) */
+.terminal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  position: relative;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.terminal-card:hover {
+  border-color: var(--text-primary);
+  box-shadow: var(--shadow-subtle);
+}
+
+.terminal-card.active-accent {
+  border-color: var(--accent-vermillion);
+}
+
+.terminal-prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.terminal-prompt-header .status-done {
+  color: var(--accent-vermillion);
+  font-weight: 600;
+}
+
+/* Map Viewport */
+.map-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #f1ede3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent-vermillion);
+  color: #ffffff;
+  border-color: var(--accent-vermillion);
+}
+
+.btn-primary:hover {
+  background: var(--accent-vermillion-hover);
+  border-color: var(--accent-vermillion-hover);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+}
+
+.btn-glass:hover {
+  background: #ffffff;
+  border-color: var(--text-primary);
+}
+
+.btn-glass.active {
+  background: var(--accent-vermillion-subtle);
+  border-color: var(--accent-vermillion);
+  color: var(--accent-vermillion);
+  font-weight: 700;
+}
+
+/* KPI Card */
+.kpi-card {
+  padding: 0.9rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+}
+
+.kpi-card:hover {
+  border-color: var(--border-medium);
+  background: #ffffff;
+}
+
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.kpi-value {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.kpi-delta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.kpi-delta.positive {
+  color: var(--accent-emerald);
+}
+
+.kpi-delta.vermillion {
+  color: var(--accent-vermillion);
+}
+
+/* Massive Araskova Background Watermark (Matching screenshot) */
+.brand-watermark {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 9rem;
+  line-height: 0.8;
+  color: rgba(18, 18, 18, 0.045);
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Top-layer Animated Modal (Conforming to Modern Web Guidance: allow-discrete & @starting-style) */
+dialog.evidence-dialog {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: auto;
+  max-width: 880px;
+  width: 92vw;
+  max-height: 88vh;
+  outline: none;
+  z-index: 100;
+
+  /* Animation rules from modern-web-guidance */
+  opacity: 0;
+  transform: scale(0.96);
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-behavior: allow-discrete;
+}
+
+dialog.evidence-dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+dialog.evidence-dialog::backdrop {
+  background-color: rgba(18, 18, 18, 0);
+  backdrop-filter: blur(0px);
+  transition:
+    display 0.25s allow-discrete,
+    overlay 0.25s allow-discrete,
+    background-color 0.25s ease-out,
+    backdrop-filter 0.25s ease-out;
+}
+
+dialog.evidence-dialog[open]::backdrop {
+  background-color: rgba(24, 22, 18, 0.55);
+  backdrop-filter: blur(4px);
+
+  @starting-style {
+    background-color: rgba(18, 18, 18, 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+.modal-container {
+  background: #faf8f5;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-elevated);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Media Query Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  dialog.evidence-dialog,
+  dialog.evidence-dialog[open],
+  .terminal-card {
+    transform: none;
+    transition-duration: 0.1s;
+  }
+}
